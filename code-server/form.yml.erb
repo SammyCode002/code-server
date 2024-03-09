@@ -1,0 +1,63 @@
+<%-
+  gpus = OodAppkit.clusters[:mana].custom_config[:gpu_type]
+-%>
+
+---
+cluster: "mana"
+form:
+#  - modules
+  - bc_account
+  - bc_queue
+  - bc_num_hours
+  - num_cores
+  - mem_in_gigabytes
+  - gpu_type
+  - gpu_count
+  - bc_email_on_started
+attributes:
+  num_cores:
+    widget: "number_field"
+    label: "Number of cores"
+    value: 1
+    help: |
+      Number of cores on node.
+    min: 0
+    max: 40
+    step: 1
+    id: 'num_cores'
+  mem_in_gigabytes:
+    widget: "number_field"
+    label: "GB of RAM"
+    value: 1
+    help: |
+      Number of GB of RAM per node.
+    min: 1
+    max: 1024
+    step: 1
+    id: 'mem_in_gigabytes'
+  gpu_count:
+    widget: "number_field"
+    label: "Number of GPUs requested"
+    value: 0
+    help: |
+     "The Number of GPUs requested.  If 0, no gpus will be allocated"
+    min: 0
+    max: 8
+    step: 1
+    id: 'gpu_count'
+  gpu_type:
+    widget: "select"
+    label: "GPU Type"
+    options:
+    <%- gpus.each do |q| -%>
+      - <%= q %>
+    <%- end -%>
+    help: |
+      "Select a type of GPU that should be used if the user selects any number of GPUs"
+    id: 'gpu_type'
+  bc_account:
+    label: "SLURM Account"
+    help: "You can leave this blank if **not** in multiple accounts."
+    
+    
+
