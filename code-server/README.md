@@ -5,7 +5,7 @@ Prerequisites
 This Batch Connect app requires the following software be installed on the compute nodes that the batch job is intended to run on (NOT the OnDemand node):
 
 Lmod 6.0.1+ or any other module purge and module load <modules> based CLI used to load appropriate environments within the batch job before launching Code server.
-Code Server 2.x+ available from Github: https://github.com/cdr/code-server/releases
+Code Server available from Github: https://github.com/cdr/code-server/releases
 Install
 git clone and modify to your needs.
 
